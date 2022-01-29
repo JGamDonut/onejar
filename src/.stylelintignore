@@ -1,0 +1,3 @@
+# ignore extreme out of sync syntax of files and / or directories from legacy projects
+sass/**/*.css
+sass/**/*.scss

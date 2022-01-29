@@ -1,0 +1,293 @@
+// ANIMATION
+// --------------------------------
+
+// animation
+
+// animation
+// animation--fade-in
+// animation--fade-out
+// animation--slideIn
+// animation--slideUp-hide
+// animation--slideDown
+// animation--slideDown-hide
+// animation--slideIn
+// animation--slideIn-fromLeft
+// animation--slideIn-fromRight
+// animation--slideOut
+// animation--slideOut-toLeft
+// animation--slideOut-toRight
+
+// animation speed
+$animationIn: 200ms;
+$animationOut: 300ms;
+$animationLong: 500ms;
+$animationXLong: 1000ms;
+
+// basic
+
+.animation {
+  display: block;
+  min-width: 50%;
+  transition: opacity ease-out $animationOut;
+}
+
+.animation--center {
+  padding: 50% 0;
+  margin-top: -100%;
+  margin-bottom: -100%;
+}
+
+.animation--absolute {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.animation--absolute-right {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.animation--absolute-bottom {
+  position: absolute;
+  bottom: 0;
+  transform: translateY(-50%);
+}
+
+// animation fading
+
+.animation--fade-in-start {
+  opacity: 0;
+  transition: opacity ease-in $animationIn;
+}
+
+.animation--fade-in {
+  opacity: 1;
+  transition: opacity ease-out $animationOut;
+}
+
+.animation--fade-out {
+  opacity: 0;
+  transition: opacity ease-out $animationOut;
+}
+
+// modified special cases
+// remove from dom natural flow
+
+.animation--fade-in-start-abs {
+  position: absolute;
+  opacity: 0;
+  transition: opacity ease-in $animationIn;
+}
+
+.animation--fade-in-start-fixed {
+  position: fixed;
+  opacity: 0;
+  transition: opacity ease-in $animationIn;
+}
+
+.animation--fade-in-delay {
+  opacity: 1;
+  transition: opacity ease-out $animationOut 100ms;
+}
+
+// sliding up and down
+// no transition
+
+.animation--slide-startZero {
+  transform: translateY(0);
+}
+
+.animation--slide-startAbove {
+  transform: translateY(-100%);
+}
+
+.animation--slide-startBottom {
+  transform: translateY(100%);
+}
+
+// starting point | from
+
+.animation--slide-fromZero {
+  transform: translateY(0);
+  transition: transform ease-in $animationIn;
+}
+
+.animation--slide-fromAbove {
+  transform: translateY(-100%);
+  transition: transform ease-in $animationIn;
+}
+
+.animation--slide-fromBottom {
+  transform: translateY(100%);
+  transition: transform ease-in $animationIn;
+}
+
+// ending point | to
+
+.animation--slide-toZero {
+  transform: translateY(0);
+  transition: transform ease-out $animationOut;
+}
+
+.animation--slide-toAbove {
+  transform: translateY(-100%);
+  transition: transform ease-out $animationOut;
+}
+
+.animation--slide-toBottom {
+  transform: translateY(100%);
+  transition: transform ease-out $animationOut;
+}
+
+// diagonal
+// -----------------------
+
+// starting point | from
+
+.animation--slide-fromZero {
+  transform: translateX(0);
+  transition: transform ease-in $animationIn;
+}
+
+.animation--slide-fromleft {
+  transform: translateX(-100%);
+  transition: transform ease-in $animationIn;
+}
+
+.animation--slide-fromRight {
+  transform: translateX(100%);
+  transition: transform ease-in $animationIn;
+}
+
+.animation--slide-fromRight-55 {
+  transform: translateX(55px);
+  transition: transform ease-in $animationIn;
+}
+
+// ending point | to
+
+.animation--slide-toZero {
+  transform: translateX(0);
+  transition: transform ease-out $animationOut;
+}
+
+.animation--slide-toleft {
+  transform: translateX(-100%);
+  transition: transform ease-out $animationOut;
+}
+
+.animation--slide-toRight {
+  transform: translateX(100%);
+  transition: transform ease-out $animationOut;
+}
+
+// unique-ers
+
+.animation--slidexy-tozero {
+  transform: translate(0, 0);
+  transition: transform ease-out $animationOut;
+}
+
+.animation--slidexy-fromTopRight-opt1 {
+  transform: translate(#{calcrem(55px)}, #{calcrem(-68px)});
+  transition: transform ease-in $animationIn;
+}
+
+// pushes
+
+.animation--push-fromZero {
+  margin-top: 0;
+  transition: margin ease-in $animationIn;
+}
+
+.animation--push-transition {
+  transition: margin ease-in $animationIn;
+}
+
+// sliding In and Out
+// ------------------------
+
+// Slide In
+// -----------
+// usage: default "animation--slideIn-inFromLeft" addremove "animation--slideIn"
+
+// start
+// -->
+
+.animation--slideIn-inFromLeft {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity ease-in $animationIn, transform ease-in $animationLong;
+}
+
+.animation--absolute.animation--slideIn-inFromLeft {
+  transform: translateY(-50%) translateX(-100%);
+}
+
+// <--
+
+.animation--slideIn-inFromRight {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity ease-in $animationIn, transform ease-in $animationLong;
+}
+
+.animation--absolute.animation--slideIn-inFromRight {
+  transform: translateY(-50%) translateX(100%);
+}
+
+// end
+
+.animation--slideIn {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity ease-out $animationXLong, transform ease-out $animationLong;
+}
+
+.animation--absolute.animation--slideIn {
+  transform: translateY(-50%) translateX(0);
+}
+
+// Slide Out
+// -----------
+// usage: default "animation--slideOut" addremove "animation--slideOut-outToLeft"
+
+// end
+
+.animation--slideOut {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity ease-out $animationLong, transform ease-out $animationLong;
+}
+
+.animation--absolute.animation--slideOut {
+  transform: translateY(-50%) translateX(0);
+}
+
+// start
+// <--
+
+.animation--slideOut-outToLeft {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity ease-in $animationLong, transform ease-in $animationLong;
+}
+
+.animation--absolute.animation--slideOut-outToLeft {
+  transform: translateY(-50%) translateX(-100%);
+}
+
+// -->
+
+.animation--slideOut-outToRight {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity ease-in $animationLong, transform ease-in $animationLong;
+}
+
+.animation--absolute.animation--slideOut-outToRight {
+  transform: translateY(-50%) translateX(100%);
+}

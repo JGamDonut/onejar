@@ -1,0 +1,48 @@
+@use 'sass:math';
+@use 'breakpoints';
+
+@mixin min($breakpoint) {
+  @if map-has-key(breakpoints.$breakpoints, $breakpoint) {
+    @media (min-width: map-get(breakpoints.$breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn 'No value could be retrieved from `#{$breakpoint}`.'
+      + ' Available breakpoints are: #{map-keys(breakpoints.$breakpoints)}.';
+  }
+}
+
+@mixin max($breakpoint) {
+  @if map-has-key(breakpoints.$breakpoints, $breakpoint) {
+    @media (max-width: map-get(breakpoints.$breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn 'No value could be retrieved from `#{$breakpoint}`.'
+      + ' Available breakpoints are: #{map-keys(breakpoints.$breakpoints)}.';
+  }
+}
+
+@mixin to-mobile {
+  @include max('mobile') {
+    @content;
+  }
+}
+
+@mixin to-desktop {
+  @include min('desktop') {
+    @content;
+  }
+}
+
+@mixin to-mobile-landscape {
+  $scale: 0.72;
+  $dpr: math.div(100, (100 * $scale));
+
+  @media
+    only screen and (min-device-pixel-ratio: $dpr) and (max-width: #{(1024 * $dpr - $dpr)}px) and (orientation: landscape),
+    only screen and (min-resolution: #{96 + (96 * $scale)}dpi) and (max-width: #{(1024 * $dpr - $dpr)}px) and (orientation: landscape),
+    only screen and (min-resolution: #{$dpr}dppx) and (max-width: #{(1024 * $dpr - $dpr)}px) and (orientation: landscape) {
+    @content;
+  }
+}

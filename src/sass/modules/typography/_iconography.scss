@@ -1,0 +1,56 @@
+/*
+// Icon
+// ------------------------------------------
+
+@font-face {
+  font-family: 'foxicon';
+  src: url('/public/fonts/foxicon.eot?50465590');
+  src: url('/public/fonts/foxicon.eot?50465590#iefix') format('embedded-opentype'),
+    url('/public/fonts/foxicon.woff?50465590') format('woff'),
+    url('/public/fonts/foxicon.ttf?50465590') format('truetype'),
+    url('/public/fonts/foxicon.svg?50465590#foxicon') format('svg');
+}
+
+[class^='icon-']:before, [class*=' icon-']:before {
+  font-family: 'foxicon', arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  speak: never;
+
+  display: inline-block;
+  text-decoration: inherit;
+  width: auto; !* 1em *!
+  margin-right: 0.2em;
+  text-align: center;
+  !* opacity: .8; *!
+
+  !* For safety - reset parent styles, that can break glyph codes*!
+  font-variant: normal;
+  text-transform: none;
+
+  !* fix buttons height, for twitter bootstrap *!
+  line-height: 1em;
+
+  !* Animation center compensation - margins should be symmetric *!
+  !* remove if not needed *!
+  margin-left: 0.2em;
+
+  !* you can be more comfortable with increased icons size *!
+  !* font-size: 120%; *!
+
+  !* Font smoothing. That was taken from TWBS *!
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  !* Uncomment for 3D effect *!
+  !* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); *!
+}
+
+.icon-cancel-alt:before { content: '\e800'; } !* '' *!
+.icon-cancel:before { content: '\e801'; } !* '' *!
+.icon-check:before { content: '\e802'; } !* '' *!
+.icon-restart:before { content: '\e803'; } !* '' *!
+.icon-caret-down:before { content: '\f004'; } !* '' *!
+.icon-caret-up:before { content: '\f005'; } !* '' *!
+.icon-caret-right:before { content: '\f006'; } !* '' *!
+.icon-caret-left:before { content: '\f007'; } !* '' *! */

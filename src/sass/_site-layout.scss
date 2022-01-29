@@ -1,0 +1,165 @@
+/* FOR DEVELOPMENT PURPOSES ONLY */
+
+@use 'abstracts/fonts';
+@use 'abstracts/colors';
+@use 'abstracts/respond';
+
+/* heading */
+
+.hero {
+  padding: 20px;
+  height: 250px;
+  width: 100%;
+  background-color: colors.$primary-dark;
+  color: colors.$primary-light;
+  font-size: 42px;
+
+  @include respond.to-desktop {
+    font-size: 64px;
+  }
+}
+
+/* heading header */
+
+.header {
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: fonts.$font_bold;
+  overflow-wrap: break-word;
+}
+
+.heading {
+  position: relative;
+  padding: 120px 0 40px;
+  width: 100%;
+  overflow-wrap: break-word;
+  font-family: fonts.$font_bold;
+  font-size: 24px;
+
+  @include respond.to-desktop {
+    font-size: 32px;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    margin-bottom: 16px;
+    width: 100%;
+    height: 4px;
+    background-color: colors.$primary-dark;
+  }
+}
+
+.hero .header {
+  color: colors.$primary-light;
+}
+
+.heading .header {
+  padding-top: 10px;
+  color: colors.$primary-dark;
+}
+
+.heading-small {
+  @extend .heading;
+
+  padding: 0 0 20px;
+  font-size: 14px;
+
+  &::before {
+    height: 1px;
+    background-color: colors.$monochrome-light;
+  }
+
+  @include respond.to-desktop {
+    font-size: 20px;
+  }
+}
+
+.heading p {
+  font-size: 15px;
+  font-family: fonts.$font_book;
+}
+
+/* layout */
+
+.layout {
+  display: flex;
+
+  @include respond.to-mobile {
+    flex-direction: column;
+  }
+}
+
+.layout-wrap {
+  flex-wrap: wrap;
+}
+
+.layout > * {
+  flex: 1;
+  margin-bottom: 40px;
+}
+
+.layout-basis-1-5 > * {
+  flex: 1 20%;
+}
+
+/* s */
+
+.showcase-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  min-height: 250px;
+  background-color: colors.$monochrome-base;
+  border: 1px solid colors.$monochrome-light;
+}
+
+.info-block {
+  overflow-wrap: break-word;
+
+  @include respond.to-desktop {
+    padding-left: 40px;
+  }
+}
+
+.inverse {
+  background-color: colors.$primary-base;
+  color: colors.$primary-light;
+}
+
+.midtone {
+  padding: 20px;
+  background-color: colors.$monochrome-base;
+}
+
+code {
+  display: block;
+  padding: 10px;
+  background-color: colors.$monochrome-base;
+  color: colors.$primary-dark;
+  font-size: 12px;
+  overflow-x: auto;
+
+  & + & {
+    margin-top: 10px;
+  }
+}
+
+pre {
+  overflow-x: auto;
+}
+
+/* utility */
+
+.pad-top-40 {
+  padding-top: 40px;
+}
+
+.props-section {
+
+  h3 {
+    font-family: 'Courier New', serif;
+  }
+}

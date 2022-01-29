@@ -1,0 +1,18 @@
+// FONTS variables
+// font-face location './../modules/fonts.scss'
+
+// font
+// ------------------------------------------------------------
+$base: 'Helvetica Neue', helvetica, arial, sans-serif !default;
+$font_medium: 'Gotham-Medium', $base;
+$font_book: 'Gotham-Book', $base;
+$font_bold: 'Gotham-Bold', $base;
+$font_bold_italic: 'Gotham-BoldItalic', $base;
+$font_black: 'Gotham-Black', $base;
+
+// weight
+// ------------------------------------------------------------
+$weight_regular: 400;
+$weight_medium: 500;
+$weight_semi_bold: 700;
+$weight_bold: 900;

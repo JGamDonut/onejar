@@ -1,0 +1,68 @@
+@use 'sass:math';
+
+// functions
+//
+
+$unit: 16px;
+
+// global helper functions
+// stripe unit from value
+@function strip-unit($value) {
+  @return math.div($value, ($value * 0 + 1));
+}
+
+// CONVERT TO 'EM'
+// convert a given pixel or unitless values to em
+// usage:
+//  font-size: calcEm(20px);
+//  font-size: calcEm(20);
+@function toEm($target, $context: $unit) {
+  // sass function to check if unit exist
+  // make unitless value to pixel
+  @if unitless($target) {
+    $target: $target * 1px;
+    $context: $context * 1px;
+  }
+
+  $em: math.div($target, $context) * 1em;
+
+  @return $em;
+}
+
+// CONVERT TO 'REM'
+// convert a given pixel or unitless values to rem
+// usage:
+//  font-size: calcRem(20px);
+//  font-size: calcRem(20);
+@function toRem($px) {
+  // stripe unit from value
+  $val: strip-unit($px);
+  $rem: math.div($val, math.div($unit, 1px)) * 1rem;
+
+  @return $rem;
+}
+
+// CONVERT TO 'PERCENTAGE'
+// convert a given pixel or unitless values to %
+// usage:
+//  font-size: calcPct(20px);
+//  font-size: calcPct(20);
+
+@function toPct($size, $newunit: $unit) {
+  $pctSize: math.div($size, $newunit) * 100;
+
+  // @debug $pctSize;
+  @return #{$pctSize};
+}
+
+// FLUID FONT SIZE
+@function fluidElement($minFontSize, $maxFontSize, $minWidth, $maxWidth) {
+  $minfs: strip-unit($minFontSize);
+  $maxfs: strip-unit($maxFontSize);
+  $minw: strip-unit($minWidth);
+  $maxw: strip-unit($maxWidth);
+
+  // [min size] + ([max size] - [min size]) *
+  // ((100vw - [min vp width]) / ([max vp width] - [min vp width]))
+  @return calc(#{$minFontSize} + (#{$maxfs} - #{$minfs}) * (100vw - #{(math.div($minWidth, ($maxw - $minw)))}));
+}

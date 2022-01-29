@@ -1,0 +1,57 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "target": "esnext",
+    "pretty": true,
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@/*": [
+        "./*"
+      ],
+      "@api/*": [
+        "./app/api/*"
+      ],
+      "@utility/*": [
+        "./app/utility/*"
+      ],
+      "@components/*": [
+        "./app/ui-components/*"
+      ],
+      "@pages/*": [
+        "./app/pages/*"
+      ],
+      "@styleguidepages/*": [
+        "./styleguide/pages/*"
+      ],
+      "mini-signals": [
+        "node_modules/mini-signals/index.js"
+      ]
+    },
+    "lib": [
+      "dom", "esnext", "scripthost", "es5"
+    ]
+  },
+  "include": [
+    "./**/*.ts",
+    "./**/*.riot"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "files": [
+    "../node_modules/gsap/types/index.d.ts"
+  ]
+}
+
