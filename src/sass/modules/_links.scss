@@ -46,7 +46,7 @@ a {
   position: relative;
   background-color: colors.$primary-orange;
   background-clip: border-box;
-  border-radius: functions.toem(4, 15);
+  border-radius: functions.toEm(4, 15);
   color: colors.$primary-light;
   font-size: 15px;
   font-family: fonts.$font_bold;
@@ -76,7 +76,7 @@ a {
 /* default */
 
 .link-button-transparent {
-  background-color: rgb(colors.$primary-light 0.25);
+  // background-color: rgb(colors.$primary-light 0.25);
   color: inherit;
 
   &:focus,
@@ -87,14 +87,14 @@ a {
 }
 
 .link-button-transparent fox-icon {
-  margin-left: -(functions.toem(8, 15));
+  margin-left: -(functions.toEm(8, 15));
 }
 
 /* default */
 
 .link-button-secondary {
   min-width: 200px;
-  background-color: rgb(colors.$primary-light 0.1);
+  // background-color: rgb(colors.$primary-light 0.1);
   font-family: fonts.$font_medium;
   text-align: left;
   color: inherit;

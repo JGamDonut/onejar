@@ -14,7 +14,7 @@ body {
   font-size: 15px;
   font-style: normal;
   font-weight: normal;
-  line-height: functions.strip-unit(functions.toem(18, 15));
+  line-height: functions.strip-unit(functions.toEm(18, 15));
   color: colors.$primary-base;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -39,42 +39,42 @@ h3 {
 h1 {
   margin-top: 0;
   font-size: 35px;
-  line-height: functions.strip-unit(functions.toem(47, 35));
+  line-height: functions.strip-unit(functions.toEm(47, 35));
 }
 
 h2 {
   font-size: 28px;
-  line-height: functions.strip-unit(functions.toem(32, 28));
+  line-height: functions.strip-unit(functions.toEm(32, 28));
 }
 
 h3 {
   font-size: 18px;
-  line-height: functions.strip-unit(functions.toem(28, 18));
+  line-height: functions.strip-unit(functions.toEm(28, 18));
 }
 
 .display-xlarge {
   font-size: 116px;
-  line-height: functions.strip-unit(functions.toem(139.2, 116));
+  line-height: functions.strip-unit(functions.toEm(139.2, 116));
 }
 
 .display-large {
   font-size: 50px;
-  line-height: functions.strip-unit(functions.toem(53, 50));
+  line-height: functions.strip-unit(functions.toEm(53, 50));
 }
 
 .display-medium {
   font-size: 35px;
-  line-height: functions.strip-unit(functions.toem(47, 35));
+  line-height: functions.strip-unit(functions.toEm(47, 35));
 }
 
 .display-small {
   font-size: 28px;
-  line-height: functions.strip-unit(functions.toem(32, 28));
+  line-height: functions.strip-unit(functions.toEm(32, 28));
 }
 
 .display-xsmall {
   font-size: 18px;
-  line-height: functions.strip-unit(functions.toem(28, 18));
+  line-height: functions.strip-unit(functions.toEm(28, 18));
 }
 
 .display-underline {
@@ -97,7 +97,7 @@ h3 {
 
 p {
   margin: 1rem 0;
-  line-height: functions.strip-unit(functions.toem(28, 15));
+  line-height: functions.strip-unit(functions.toEm(28, 15));
 
   @include respond.to-mobile-landscape {
     margin-top: 0.5em;

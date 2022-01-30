@@ -3,7 +3,7 @@
 @use '../modules/glassbg';
 @use '../abstracts/functions';
 
-$border-radius: functions.toem(4, 15);
+$border-radius: functions.toEm(4, 15);
 
 .card-border {
   position: absolute;
@@ -12,12 +12,12 @@ $border-radius: functions.toem(4, 15);
   bottom: 0;
   left: 0;
   border-radius: $border-radius;
-  background-image:
+  /*background-image:
     linear-gradient(
       200deg,
       rgb(colors.$primary-light 0.35) 0%,
       rgb(colors.$primary-light 0.05) 50%
-    );
+    );*/
 
   & + * {
     margin: math.div($border-radius, 2);
@@ -44,12 +44,12 @@ $border-radius: functions.toem(4, 15);
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgb(colors.$primary-dark 0.3);
+    // background: rgb(colors.$primary-dark 0.3);
   }
 }
 
 .card-background-darker {
-
+/*
   &::before {
     background-image:
       linear-gradient(
@@ -57,5 +57,5 @@ $border-radius: functions.toem(4, 15);
         rgb(colors.$primary-dark 0.45) 0%,
         rgb(colors.$primary-dark 0.05) 50%
       );
-  }
+  }*/
 }
