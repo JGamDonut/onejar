@@ -36,6 +36,6 @@ module.exports = {
   },
   buildOptions: {
     clean: true,
-    out: '/public',
+    out: '../public',
   },
 };
