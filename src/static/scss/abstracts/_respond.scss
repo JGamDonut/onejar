@@ -1,0 +1,111 @@
+@use 'breakpoints';
+
+@mixin min($breakpoint) {
+  @if map-has-key(breakpoints.$breakpoints, $breakpoint) {
+    @media (min-width: map-get(breakpoints.$breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn 'No value could be retrieved from `#{$breakpoint}`.'
+      + ' Available breakpoints are: #{map-keys(breakpoints.$breakpoints)}.';
+  }
+}
+
+
+@mixin max($breakpoint) {
+  @if map-has-key(breakpoints.$breakpoints, $breakpoint) {
+    @media (max-width: map-get(breakpoints.$breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn 'No value could be retrieved from `#{$breakpoint}`.'
+      + ' Available breakpoints are: #{map-keys(breakpoints.$breakpoints)}.';
+  }
+}
+
+@mixin to-mobile {
+  @include max('mobile') {
+    @content;
+  }
+}
+
+@mixin to-desktop {
+  @include min('desktop') {
+    @content;
+  }
+} 
+
+// height based
+@mixin respond-minH($height) {
+    @media only screen and (min-height: $height) {
+        @content;
+    }
+}
+
+@mixin respond-maxH($height) {
+    @media only screen and (max-height: $height) {
+        @content;
+    }
+}
+
+@mixin respond-minWmaxH($wval, $hval) {
+    @media only screen and (max-height: $hval) and (min-width: $wval) {
+        @content;
+    }
+}
+
+@mixin respond-maxHLandscape($hval) {
+    @media only screen and (max-height: $hval) and (orientation: landscape) {
+        @content;
+    }
+}
+
+@mixin respond-minHLandscape($hval) {
+    @media only screen and (min-height: $hval) and (orientation: landscape) {
+        @content;
+    }
+}
+
+@mixin respond-maxWLandscape($hval) {
+    @media only screen and (max-width: $hval) and (orientation: landscape) {
+        @content;
+    }
+}
+
+@mixin respond-minWLandscape($hval) {
+    @media only screen and (min-width: $hval) and (orientation: landscape) {
+        @content;
+    }
+}
+
+
+
+
+
+// hi resolution
+@mixin hi-res() {
+    @media
+    only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (   min--moz-device-pixel-ratio: 2),
+    only screen and (     -o-min-device-pixel-ratio: 2/1),
+    only screen and (        min-device-pixel-ratio: 2),
+    only screen and (                min-resolution: 192dpi),
+    only screen and (                min-resolution: 2dppx) { 
+            @content;
+        
+
+    }
+}
+
+
+
+//ie10 and ie11 detection
+@mixin lt-edge {
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        @content;
+    }
+}

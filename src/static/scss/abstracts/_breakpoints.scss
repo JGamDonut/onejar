@@ -1,0 +1,25 @@
+//
+// RWD 
+//
+
+
+
+$mqhalf: .0315rem;  // .5px
+$mqone: .063rem;    // 1px
+$xxxsmall: 22.5rem; //360px
+$xxsmall: 26.25rem; //420px
+$xsmall:  30rem;    //480px
+$small:   35.5rem;  //568px
+$smedium:  45rem;   //720px
+$medium:  60rem;    //960px
+$large:   72rem;    //1152px
+$xlarge:  85rem;    //1360px
+$xxlarge: 100rem;   //1600px
+
+$mobile-max-width: 767px;
+$desktop-min-width: 768px;
+
+$breakpoints: (
+  'desktop': $desktop-min-width,
+  'mobile': $mobile-max-width
+) !default;

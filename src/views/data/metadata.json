@@ -1,0 +1,21 @@
+{
+    "title": "One Jar.red | Experience",
+    "url": "https://onejar.red",
+    "language": "en",
+    "description": "This is the world of One Jar.red! Let's go!",
+    "feed": {
+      "subtitle": "This is the world of One Jar.red! Let's go!",
+      "filename": "feed.xml",
+      "path": "/feed/feed.xml",
+      "id": "https://onejar.red"
+    },
+    "jsonfeed": {
+      "path": "/feed/feed.json",
+      "url": "https://onejar.red/feed/feed.json"
+    },
+    "author": {
+      "name": "Jarred Gambrell",
+      "email": "jarredgambrell@onejar.red",
+      "url": "https://onejar.red"
+    }
+  }

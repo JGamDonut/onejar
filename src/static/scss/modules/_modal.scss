@@ -1,0 +1,20 @@
+// uimodal-open
+// for the body tag when a modal is open
+// to lock scrolling
+.uimodal-open {
+  position: relative;
+  overflow: hidden;
+  touch-action: none;
+}
+
+
+//
+// style to get scroll bar width
+// -------------------------------------------------
+.scrollbarbox {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  overflow: scroll;
+  top: -9999px;
+}

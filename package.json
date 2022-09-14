@@ -3,22 +3,21 @@
   "version": "0.0.0",
   "description": "OneJar.Red, a playground, a portfolio, an experience",
   "main": "main.js",
+  "engines" : { 
+    "npm" : ">=8.18.0",
+    "node" : ">=18.8.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build && node ./scripts/dev.js",
-    "watch-index": "./node_modules/.bin/onchange \"src/index.njk\" -- npm run build-html",
-    "watch-client": "snowpack dev --config scripts/snowpack.config.cjs",
-    "watch-public": "./node_modules/.bin/onchange \"src/public/**/*\" -- npm run build-public",
-    "watch-sass": "./node_modules/.bin/sass --watch src/sass:./public/css",
-    "build": "npm run clean-build && shx mkdir -p \"public\" && npm run build-html && npm run build-public && npm run build-images",
-    "clean-build": "./node_modules/.bin/shx rm -rf ./public",
-    "build-html": "node ./scripts/build-html.js",
-    "build-styleguide-html": "node ./scripts/build-styleguide-html.js",
-    "build-public": "node ./scripts/build-public.js",
-    "build-images": "node ./scripts/image-compression.js",
-    "build-client": "snowpack build --config scripts/snowpack.config.cjs",
-    "build-sass": "sass src/sass/main.scss:public/css/main.css --style=compressed",
-    "build-prod": "npm run build && npm run build-sass && npm run build-client",
+    "start": "npm run rebuild && npx @11ty/eleventy && snowpack dev",
+    "build": "npm run rebuild && npx @11ty/eleventy && snowpack build",
+    "rebuild": "npm run clean-build && shx mkdir -p \"build\" && npm run rebuild-static",
+    "clean-build": "./node_modules/.bin/shx rm -rf ./build",
+    "rebuild-static": "npm run build-static && npm run build-sass && npm run build-images",
+
+    "build-static": "node ./scripts/build-static.js",
+    "build-sass": "sass src/static/scss:build/css --style=compressed",
+    "build-images": "node ./scripts/image-compression.mjs",
+
     "lint": "npm run lint-client && npm run lint-sass",
     "lint-client": "./node_modules/.bin/eslint \"src/**/*.{js,ts}\" --quiet --fix",
     "lint-sass": "./node_modules/.bin/stylelint \"src/sass/**/*.scss\" \"src/**/*.riot\" --fix --config \"src/.stylelintrc\"",
@@ -35,11 +34,12 @@
   ],
   "author": "Jarred Gambrell",
   "license": "ISC",
-  "dependencies": {},
   "devDependencies": {
+    "@11ty/eleventy": "^1.0.2",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^4.1.0",
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
-    "@snowpack/plugin-sass": "^1.4.0",
+    "@snowpack/plugin-run-script": "^2.3.0",
     "@snowpack/plugin-webpack": "^3.0.0",
     "@types/dotenv": "^8.2.0",
     "@types/eslint": "^8.2.0",
@@ -47,8 +47,6 @@
     "@types/snowpack-env": "^2.3.4",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
-    "@webcomponents/template": "^1.5.0",
-    "concurrently": "^6.4.0",
     "core-js": "^3.19.1",
     "dotenv": "^10.0.0",
     "eslint": "^8.3.0",
@@ -65,15 +63,6 @@
     "snowpack": "^3.8.8",
     "stylelint": "^14.1.0",
     "stylelint-config-standard-scss": "^3.0.0",
-    "typescript": "^4.5.2",
-    "vite": "^2.6.14"
-  },
-  "pre-commit": {
-    "run": [
-      "lint-client-fail",
-      "lint-sass-fail"
-    ],
-    "silent": true
-  },
-  "type": "module"
+    "typescript": "^4.5.2"
+  }
 }

@@ -1,0 +1,257 @@
+//mixin used for positioning both vertically and/or horizontally
+@mixin centerer($horizontal: true, $vertical: true) {
+  position: absolute;
+  @if ($horizontal and $vertical) {
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  @else if ($horizontal) {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  @else if ($vertical) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+
+
+
+
+/* 
+@mixin link-state() {
+  color: $gray4;
+  text-decoration: none;
+  &:hover {
+    color: $gray4;
+    text-decoration: underline;
+  }
+  &:active {
+    color: $gray4;
+    text-decoration: underline;
+  }
+}
+ */
+
+
+
+
+
+
+// RGBA Background + Fallback
+@mixin bg-rgba($color, $opacity: .90, $fallback: $color) {
+  background: $fallback; /* The Fallback */
+  background: rgba($color, $opacity);
+}
+
+@mixin gradient-rgba($rgba1, $rgba2, $hex1, $hex2) {
+  background: -moz-linear-gradient(left, $rgba1 0%, $rgba2 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, $rgba1 0%,$rgba2 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, $rgba1 0%,$rgba2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$hex1', endColorstr='$hex2',GradientType=0 ); /* IE6-9 */
+}
+
+// Gradient
+@mixin gradient($color1, $color2) {
+ //background-color: $color2;
+ background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($color1), to($color2));
+ background-image: -webkit-linear-gradient(top, $color1, $color2); 
+ background-image:    -moz-linear-gradient(top, $color1, $color2);
+ background-image:     -ms-linear-gradient(top, $color1, $color2);
+ background-image:      -o-linear-gradient(top, $color1, $color2);
+}
+
+// Linear gradient
+@mixin linear-gradient($color1, $color2) {
+  //background-color: $color2;
+  background-image: linear-gradient(bottom, $color2 10%, $color1 50%);
+  background-image: -o-linear-gradient(bottom, $color2 10%, $color1 50%);
+  background-image: -moz-linear-gradient(bottom, $color2 10%, $color1 50%);
+  background-image: -webkit-linear-gradient(bottom, $color2 10%, $color1 50%);
+  background-image: -ms-linear-gradient(bottom, $color2 10%, $color1 50%);
+
+  background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0.01, $color2),
+      color-stop(0.51, $color1)
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$color1, endColorstr=$color2,GradientType=1 );
+}
+
+// Hard line gradient
+@mixin hard-line-gradient($color1, $color2) {
+  //background-color: $color2;
+  background-image: linear-gradient(left, $color2 50%, $color1 50%);
+  background-image: -o-linear-gradient(left, $color2 50%, $color1 50%);
+  background-image: -moz-linear-gradient(left, $color2 50%, $color1 50%);
+  background-image: -webkit-linear-gradient(left, $color2 50%, $color1 50%);
+  background-image: -ms-linear-gradient(left, $color2 50%, $color1 50%);
+
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      left right,
+      color-stop(0.50, $color2),
+      color-stop(0.50, $color1)
+  );
+  
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$color1, endColorstr=$color2,GradientType=1 ); /* IE6-9 */
+
+}
+
+// Gradient
+@mixin gradient-direction($dir, $color1, $color2) {
+  // toBottom
+  @if $dir == toBottom {
+      //background: rgba(0,0,0,1);
+      background: -webkit-gradient(left top, left bottom, color-stop(0%, $color1), color-stop(100%, $color2));
+      background: -webkit-linear-gradient(top, $color1 0%, $color2 100%);
+      background:    -moz-linear-gradient(top, $color1 0%, $color2 100%);
+      background:     -ms-linear-gradient(top, $color1 0%, $color2 100%);
+      background:      -o-linear-gradient(top, $color1 0%, $color2 100%);
+      background:         linear-gradient(to bottom, $color1 0%, $color2 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$color1, endColorstr=$color2, GradientType=0 );
+  }
+  // toRight
+  @if $dir == toRight {
+      //background: rgba(0,0,0,1);
+      background: -webkit-gradient(left top, right top, color-stop(0%, $color1), color-stop(100%, $color2));
+      background: -webkit-linear-gradient(left, $color1 0%, $color2 100%);
+      background:    -moz-linear-gradient(left, $color1 0%, $color2 100%);
+      background:     -ms-linear-gradient(left, $color1 0%, $color2 100%);
+      background:      -o-linear-gradient(left, $color1 0%, $color2 100%);
+      background:         linear-gradient(to right, $color1 0%, $color2 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$color1, endColorstr=$color2, GradientType=1 );
+  }
+  // toBottomRight
+  @if $dir == toBottomRight {
+      //background: rgba(0,0,0,1);
+      background: -webkit-gradient(left top, right bottom, color-stop(0%, $color1), color-stop(100%, $color2));
+      background: -webkit-linear-gradient(-45deg, $color1 0%, $color2 100%);
+      background:    -moz-linear-gradient(-45deg, $color1 0%, $color2 100%);
+      background:     -ms-linear-gradient(-45deg, $color1 0%, $color2 100%);
+      background:      -o-linear-gradient(-45deg, $color1 0%, $color2 100%);
+      background:         linear-gradient(135deg, $color1 0%, $color2 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$color1, endColorstr=$color2, GradientType=1 );
+  }
+  // toTopRight
+  @if $dir == toTopRight {
+      //background: rgba(0,0,0,1);
+      background: -webkit-gradient(left bottom, right top, color-stop(0%, $color1), color-stop(100%, $color2));
+      background: -webkit-linear-gradient(45deg, $color1 0%, $color2 100%);
+      background:    -moz-linear-gradient(45deg, $color1 0%, $color2 100%);
+      background:     -ms-linear-gradient(45deg, $color1 0%, $color2 100%);
+      background:      -o-linear-gradient(45deg, $color1 0%, $color2 100%);
+      background:         linear-gradient(45deg, $color1 0%, $color2 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$color1, endColorstr=$color2, GradientType=1 );
+  }
+}
+
+// Background image + Fallback
+@mixin background-img($fileName, $width, $height) {
+  $path: $fileName;
+  background-image: url($path);
+  background-color: transparent;
+  width: $width;
+  height: $height;   
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  border: 0;
+}
+
+// Includes background-clip to eliminate stubborn containers who want appear behind the curved edges
+@mixin border-radius($radius...) {
+  -webkit-background-clip: padding-box;
+          background-clip: padding-box;     
+    -webkit-border-radius: $radius;
+       -moz-border-radius: $radius;  
+            border-radius: $radius;
+}
+
+@mixin box-shadow($offx:0, $offy:0, $blur:0px, $spread:0px, $color:#000) {
+  -webkit-box-shadow:  $offx $offy $blur $spread $color ;
+     -moz-box-shadow:  $offx $offy $blur $spread $color ;
+          box-shadow:  $offx $offy $blur $spread $color ;
+}
+
+@mixin box-shadow-inset($inset, $offx:0, $offy:0, $blur:0px, $spread:0px, $color:#000) {
+  -webkit-box-shadow: $inset $offx $offy $blur $spread $color;
+     -moz-box-shadow: $inset $offx $offy $blur $spread $color;
+          box-shadow: $inset $offx $offy $blur $spread $color;
+}
+
+@mixin clearfix {
+  /* For modern browsers */
+  &:before,
+  &:after {
+      content:"";
+      display:table;
+  }
+  &:after {
+      clear:both;
+  }
+  /* For IE 6/7 (trigger hasLayout) */
+  & {
+      zoom:1;
+  }
+}
+
+@mixin appearance($value) {
+-webkit-appearance: $value;
+   -moz-appearance: $value;
+    -ms-appearance: $value;
+        appearance: $value;
+}
+
+@mixin calc-prefix($prop, $value) {
+  #{$prop}: -webkit-#{$value};
+  #{$prop}: -moz-#{$value};
+  #{$prop}: -moz-#{$value};
+  #{$prop}: -o-#{$value};
+  #{$prop}: $value;
+}
+
+
+
+
+/* ========================================================================== *\
+ `ARROWs'
+\* ========================================================================== */
+
+//all $dir = TRBL | $valueset = '24px solid'
+@mixin arrow($dir, $size, $style: solid, $color:#ffffff ) {
+
+  //reset
+  border: 0; 
+  border: none;
+
+  $dir: to-lower-case($dir);
+  $opposite-direction: opposite-direction($dir);
+  border-#{$opposite-direction}: $size $style $color;
+  
+   //top and bottom
+   @if ($dir == 'top' or $dir == 'bottom') {
+       border-right: $size $style transparent;
+       border-left: $size $style transparent;
+   }
+   
+  //right and left
+  @if ($dir == 'right' or $dir == 'left') {
+      border-top: $size $style transparent;
+      border-bottom: $size $style transparent;
+  }
+}
+
+// pause button or pipes 
+@mixin pause($size, $style, $color:#ffffff ) {
+  border-right: $size $style $color;
+  border-left: $size $style $color;
+}
+
+
+

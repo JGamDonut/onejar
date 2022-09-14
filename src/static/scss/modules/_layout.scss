@@ -1,0 +1,207 @@
+// `LAYOUT
+// ----------------------------------------------------------------
+
+// imports
+@use '../abstracts/breakpoints';
+@use '../abstracts/respond';
+
+// mixin helper for mobile desktop conditionals
+@mixin responsive($name) {
+  // mobile
+  @if $name==mobile {
+    @include respond.to-mobile() {
+      @content;
+    }
+  }
+  // desktop
+  @if $name==desktop {
+    @include respond.to-desktop() {
+      @content;
+    }
+  }
+}
+
+
+
+// layout container use
+// ------------------------
+// layout
+// layout-container
+// layout-block
+// layout-gutter
+// layout-wrap
+
+// layout item use
+// --------------------------
+// layout-col
+// layout-col-x-x
+// layout-col-x-x-(breakpoint)
+
+
+// layout/grid variables
+$cols: 12;
+$gutter: 1%;
+$gutterTopBottom: 20px;
+$gutterRightLeft: 2%;
+
+// layout base
+.layout {
+  display: flex;
+
+  &+& {
+    margin-top: $gutterTopBottom;
+  }
+}
+
+.layout-container {
+  position: relative;
+  padding: 0 1rem;
+  margin: 0 auto;
+  width: 100%;
+
+  @include respond.to-desktop() {
+    padding: 0 1.25rem;
+    max-width: 1440px;
+  }
+}
+
+// align in a stack = block set the > cols to stacked/block elements
+@mixin layout-block() {
+  flex-direction: column;
+}
+@mixin layout-block-col() {
+  & > [class*=layout-col] + [class*=layout-col] {
+    margin-top: $gutterTopBottom;
+  }
+}
+@mixin layout-gutter() {
+  & > [class*=layout-col] + [class*=layout-col] {
+    margin-left: $gutterRightLeft;
+  }
+}
+@mixin layout-flow-reverse() {
+  flex-direction: row-reverse;
+}
+
+.layout-block {
+  @include layout-block();
+}
+
+.layout-flow-wrap {
+  flex-flow: wrap;
+}
+
+.layout-flow-reverse {
+  flex-direction: row-reverse;
+}
+
+.vertical-align-center {
+  align-items: center;
+}
+
+.horizontal-align-center {
+  justify-items: center;
+}
+
+// layout-col
+// ---------------------------------------
+.layout-col {
+  width: 100%;
+  height: 100%;
+
+  & > * {
+    max-width: 100%;
+  }
+}
+
+.layout-gutter > .layout-col + .layout-col {
+  margin-left: $gutterRightLeft;
+}
+
+.layout-gutter-tb > .layout-col + .layout-col {
+  margin-top: $gutterTopBottom;
+}
+
+// width margin generator for flex-col (s)
+@for $x from 1 through $cols {
+
+  // base : flush no gutter spacing
+  // --------------------------------
+  .layout-col-#{$x}-#{$cols} {
+    width: percentage($x / $cols);
+  }
+
+  // space in between section
+  //-------------------------------------
+  .layout-gutter > layout-col-#{$x}-#{$cols} {
+    width: (percentage($x / $cols) - $gutterRightLeft) + (($x / $cols) * $gutterRightLeft);
+  }
+
+  // layout col with breakpoints
+  // map/list definition for break points for grid
+  // reference ../abstracts/breakpoints.scss |  'desktop', 'mobile'
+  // ex. .layout-col--1-2-desktop
+  @each $key in breakpoints.$breakpoints {
+    // name: 'desktop' | 'mobile'
+    $name: nth($key, 1);
+
+    // base
+    .layout-col-#{$x}-#{$cols}-#{$name} {
+      @include responsive(#{$name}){
+        width: percentage($x / $cols);
+      }
+    }
+
+    // space in between
+    .layout-gutter > .layout-col-#{$x}-#{$cols}-#{$name} {
+      @include responsive(#{$name}){
+        width: (percentage($x / $cols) - $gutterRightLeft) + (($x / $cols) * $gutterRightLeft);
+      }
+
+      // adjacent blocks
+      & + .layout-col-#{$x}-#{$cols}-#{$name} {
+        margin-left: 0;
+
+        @include responsive(#{$name}){
+          margin-left: $gutterRightLeft;
+        }
+      }
+    }
+  }
+}
+
+
+// layout col with breakpoints
+// map/list definition for break points for grid
+// reference ../abstracts/breakpoints.scss |  'desktop', 'mobile'
+// ex. .layout-block-desktop - col will stack for desktop view only
+// ex. .layout-block-mobile - col will stack for mobile view only
+@each $key in breakpoints.$breakpoints {
+  // name: 'desktop' | 'mobile'
+  $name: nth($key, 1);
+
+  .layout-block-#{$name} {
+    @include responsive(#{$name}){
+      @include layout-block();
+      @include layout-block-col();
+    }
+  }
+
+  .layout-gutter-#{$name} {
+    @include responsive(#{$name}){
+      @include layout-gutter();
+    }
+  }
+
+  .layout-gutter-tb-#{$name} {
+    @include responsive(#{$name}){
+      @include layout-block-col();
+    }
+  }
+
+  .layout-flow-reverse-#{$name} {
+    @include responsive(#{$name}){
+      @include layout-flow-reverse();
+    }
+  }
+}

@@ -1,0 +1,177 @@
+// `TEXT base
+// -----------------------------------------------
+
+// imports
+@use '../../abstracts/breakpoints';
+@use '../../abstracts/respond';
+@use '../../abstracts/colors';
+@use '../../abstracts/fonts';
+
+
+
+
+html,
+body {
+  font-family: fonts.$display_regular;
+  line-height: 1.5;
+  color: colors.$primary-base;
+}
+
+
+
+
+// headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 1rem;
+  margin-bottom: 1.25rem;
+  color: colors.$primary-dark;
+  font-family: fonts.$display_bold;
+  font-weight: normal;
+  line-height: 1;
+}
+
+h1 {
+  font-size: 2rem;
+  @include respond.to-desktop() {
+    font-size: 4rem;
+  }
+}
+
+h2 {
+  font-size: 1.5rem;
+  @include respond.to-desktop()  {
+    font-size: 2rem;
+  }
+}
+
+h3 {
+  font-size: 1rem;
+  @include respond.to-desktop()  {
+    font-size: 1.5rem;
+  }
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+h5 {
+  font-size: 0.75rem;
+}
+
+h6 {
+  font-size: 0.625rem;
+}
+
+
+
+
+p,
+ol,
+ul {
+  margin-bottom: 1.25rem;
+}
+
+ul,
+ol {
+  padding-left: 1.25em;
+}
+
+
+strong {
+  font-family: fonts.$display_bold;
+}
+
+
+
+.underline {
+  text-decoration: underline;
+}
+
+.nounderline {
+  text-decoration: none;
+}
+
+p,
+ul,
+ol,
+small,
+dl,
+dt,
+dd {
+  margin-bottom: 1.25rem;
+  line-height: 1.7;
+}
+
+small {
+    display: block;
+    font-size: .75em;
+    line-height: 1.3;
+}
+
+strong {
+    font-weight: 700;
+}
+
+i {
+    font-style: normal;
+}
+
+
+sub,
+sup {
+    position: relative;
+    font-size: .625em;
+}
+
+sup {
+    vertical-align: super;
+    top: .125em;
+}
+
+sub {
+    bottom: .088em;
+    vertical-align: sub;
+}
+
+.br {
+    display: block;
+}
+
+code {
+    padding: 5px 8px 5px;
+    background-color: gray;
+    color: white;
+    border-radius: 2px;
+}
+
+figcaption {
+    font-size: .75em;
+    font-weight: 600;
+}
+
+
+
+// regular weighted text style
+.display-regular {
+  font-family: fonts.$display_regular;
+}
+
+.regular-regular {
+  font-family: fonts.$text_regular;
+}
+
+// strong weighted text style
+.display-bold {
+  font-family: fonts.$display_bold;
+  font-weight: normal;
+}
+
+.regular-bold {
+  font-family: fonts.$text_bold;
+}

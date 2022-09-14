@@ -1,0 +1,249 @@
+// `HELPERS base
+// -----------------------------------------------
+
+// imports
+@use '../abstracts/breakpoints';
+@use '../abstracts/respond';
+@use '../abstracts/colors';
+@use '../abstracts/fonts';
+
+
+
+
+// show / hide
+.hide {
+  display: none;
+}
+
+
+
+
+// section
+// push / margin
+.push-bottom {
+  margin-bottom: 1rem;
+}
+
+.push-bottom-medium {
+  margin-bottom: 2.5rem;
+}
+
+.push-bottom-large {
+  margin-bottom: 5rem;
+}
+
+
+
+
+// shift right
+.float-right {
+  float: right;
+}
+
+
+
+
+// whenever an overlay is active freeze the screen and lock scrolling
+.overlay-active {
+  position: relative;
+  overflow: hidden;
+  touch-action: none;
+}
+
+
+
+
+
+//
+// for inline text
+//
+$text-align: 
+  left,
+  center,
+  right;
+
+@each $alignment in $text-align {
+  .text-align-#{$alignment} {
+    text-align: $alignment;
+  }
+}
+
+
+
+
+//
+// for inline text
+//
+.verticalcenter {
+  position: relative;
+  transform: translateY(-50%);
+  top: 50%;
+}
+
+
+
+//
+// for floats
+//
+$float-align: left, right;
+
+@each $alignment in $float-align {
+  .push-#{$alignment} {
+    float: $alignment;
+  }
+}
+
+.small-screen-only {
+  display: block;
+
+  @include respond-min($small) {
+    display: none;
+  }
+}
+
+.up-to-medium-only {
+  display: block;
+
+  @include respond-min($medium) {
+    display: none;
+  }
+}
+
+.up-to-large-only {
+  display: block;
+
+  @include respond-min($large) {
+    display: none;
+  }
+}
+
+.beyond-small-only {
+  display: none;
+
+  @include respond-min($small) {
+    display: block;
+  }
+}
+
+.med-screen-only {
+  display: none;
+
+  @include respond-min($medium) {
+    display: block;
+  }
+}
+
+.large-screen-only {
+  display: none;
+
+  @include respond-min($large) {
+    display: block;
+  }
+}
+
+.hide-small-screen {
+  @include respond-max($small - 0.63rem) {
+    display: none;
+  }
+}
+
+.hide-med-screen {
+  @include respond-max($medium - 0.63rem) {
+    display: none;
+  }
+}
+
+.hide-large-screen {
+  @include respond-max($large - 0.63rem) {
+    display: none;
+  }
+}
+
+.d-inline { display: inline }
+.d-block { display: block }
+
+.uppercase { text-transform: uppercase }
+.lowercase { text-transform: lowercase }
+
+.img-max-height-300 {
+  img {
+    max-height: 135px;
+    position: relative;
+    margin: 1em auto;
+    clear: both;
+    display: block;
+  }
+}
+
+// for YouTube fullscreen videos
+.ls-wp-fullwidth-container { z-index: 9999 }
+
+.hidden { display: none }
+.hidden-important { display: none !important }
+
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.p-with-icon {
+  position: relative;
+  padding-left: 1.5em;
+
+  .icn {
+    position: absolute;
+    left: 0;
+    top: 4px;
+  }
+}
+
+.tel-link {
+  text-decoration: none;
+  color: $black-b;
+
+  .footer &,
+  .main-nav & {
+    color: $white;
+  }
+}
+
+.h-with-icon {
+  .icn {
+    position: relative;
+    top: 0.063rem;
+    margin-right: 0.219rem;
+    width: .709rem;
+    height: .877rem;
+  }
+}
+
+
+
+
+
+///ada aria helpers
+[aria-activedescendant],
+[aria-checked],
+[aria-labelledby],
+[aria-label],
+[aria-live],
+[aria-pressed],
+[aria-hidden],
+[aria-readonly],
+[aria-describedby],
+[role],
+[tabindex] {
+  &:focus {
+    outline: none;
+  }
+}
+
+[role="dialog"]:focus {
+  outline: none;
+}

@@ -1,0 +1,52 @@
+@use './abstracts/fonts';
+@use './abstracts/colors';
+@use './abstracts/respond';
+
+
+html, body {
+  overflow-x: hidden;
+  position: relative;
+}
+
+body {
+  font-family: fonts.$display_regular;
+  font-size: 16px;
+  height: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: colors.$primary-light;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  @include respond.to-mobile {
+    &.mobile-nav-active {
+      overflow-y: hidden;
+    }
+  }
+}
+
+section {
+
+  + section {
+    margin-top: 4rem;
+  }
+
+  &.filler {
+    min-height: 80vh;
+  }
+}
+
+main {
+  @include respond.to-mobile {
+    body.mobile-nav-active & {
+      overflow-y: hidden;
+      height: 100vh;
+    }
+  }
+}

@@ -1,0 +1,115 @@
+// `LINK base
+// -----------------------------------------------
+
+// imports
+@use '../abstracts/breakpoints';
+@use '../abstracts/respond';
+@use '../abstracts/colors';
+@use '../abstracts/fonts';
+
+
+
+
+a {
+  background: transparent;
+  color: colors.$secondary-highlight4;
+  font-family: fonts.$display_bold;
+  font-weight: normal;
+
+  &:focus,
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus,
+  &:hover,
+  &:active {
+    color: colors.$secondary-highlight4;
+    outline: none;
+    text-decoration: underline;
+  }
+
+  &:active {
+    color: colors.$monochrome-dark;
+  }
+
+  //ada
+  &:focus {
+    outline: colors.$monochrome-mid 0.5px solid;
+  }
+}
+
+
+
+// undecorated links
+// --------------------------
+.link-dark {
+  color: colors.$primary-dark;
+  font-family: fonts.$display_regular;
+  &:link,
+  &:hover {
+    color: colors.$primary-dark;
+  }
+  cursor: pointer;
+}
+
+
+
+// undecorated links
+// --------------------------
+.link-undecorated {
+  color: inherit;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.link-decorated-hover {
+  color: inherit;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    color: inherit;
+    text-decoration: underline;
+  }
+}
+
+
+
+// styled caret links
+// --------------------------
+.link-caret {
+  color: colors.$primary-base;
+  font-family: fonts.$display_bold;
+  font-weight: normal;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    color: colors.$primary-base;
+  }
+
+  & > *:last-child {
+    margin-left: 0.75rem;
+  }
+}
+
+.link-caret-inverse {
+  @extend .link-caret;
+  color: colors.$primary-light;
+
+  &:focus,
+  &:hover {
+    color: colors.$primary-light;
+  }
+}

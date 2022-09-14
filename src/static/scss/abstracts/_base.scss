@@ -1,0 +1,14 @@
+//
+// base units
+//
+$base-size: 16px !default;
+$base-unit: 1rem !default;
+$unit:     .25rem !default; //4px
+$z-base: 0;
+
+// may need just the unitless number for math calculation
+$constrain-full: 1140;
+$constrain-size: $constrain-full + 1px;
+
+$border-radius-small: .188rem;
+$border-radius: .375rem;
