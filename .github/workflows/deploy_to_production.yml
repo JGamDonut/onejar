@@ -18,7 +18,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -32,4 +32,4 @@ jobs:
         echo "BASE_URL=https://onejar.red" >> .env.local
         echo "BASE_URL_LOCAL=localhost:3000" >> .env.local
     - name: Build application
-      run: 'npm ci && npm run build-prod --if-present'
+      run: 'npm ci && npm run build --if-present'
