@@ -145,6 +145,7 @@ $RECYCLE.BIN/
 /lib/
 /public/
 /build/
+/dist/
 
 # stack specific gitignore copy for npm workaround
 .stack-gitignore
